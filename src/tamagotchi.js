@@ -8,11 +8,22 @@ export class Tamagotchi
     this.happieness = 10;
     this.tiredness = 0;
     this.timerUnit = timerUnit;
+    // this.feedBerries = this.feed(1);
+    // this.feedMeat = this.feed(3);
   }
+  //
+  // feed(amount){
+  //   if (this.hunger > 0){
+  //     return () => {
+  //       this.hunger -= amount;
+  //     }
+  //     console.log("feed" + amount);
+  //   }
+  // }
 
   feed(){
     if (this.hunger > 0){
-      this.hunger--;
+      this.hunger -= 1;
       console.log("feed");
     }
   }

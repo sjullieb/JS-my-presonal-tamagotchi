@@ -53,4 +53,12 @@ $(document).ready(function() {
   $("#feed").click(function(){
     tama.feed();
   });
+
+  $("#feedBerries").click(function(){
+    tama.feedBerries();
+  });
+
+  $("#feedMeat").click(function(){
+    tama.feedMeat();
+  });
 });
