@@ -1,0 +1,77 @@
+export class Tamagotchi
+{
+  constructor(name, timerUnit)
+  {
+    console.log("constructor");
+    this.name = name;
+    this.hunger = 0;
+    this.happieness = 10;
+    this.tiredness = 0;
+    this.timerUnit = timerUnit;
+  }
+
+  feed(){
+    if (this.hunger > 0){
+      this.hunger--;
+      console.log("feed");
+    }
+  }
+
+  sleep(){
+    if(this.tiredness > 0){
+      this.tiredness = 0;
+      console.log("sleep");
+    }
+  }
+
+  play(){
+    if (this.happieness < 10){
+      this.happieness++;
+      console.log("play");
+    }
+  }
+
+  decreaseHappieness(){
+    if (this.happieness > 0){
+      this.happieness--;
+    }
+  }
+
+  increaseHunger(){
+    if(this.hunger < 10){
+      this.hunger++;
+    }
+    //console.log("hunger " + this.hunger);
+  }
+
+  increaseTiredness(){
+    if(this.tiredness < 10){
+      this.tiredness++;
+    }
+    //console.log("tiredness " + this.tiredness);
+  }
+
+  isDead(){
+    if((this.tiredness == 10) || (this.hunger == 10) || (this.happieness == 0)){
+      console.log("tiredness " + this.tiredness);
+      console.log("happieness " + this.happieness);
+      console.log("hunger " + this.hunger);
+      clearInterval(this.timer);
+      this.checking();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  start(stopChecking){
+    this.checking = stopChecking;
+
+    this.timer = setInterval( () => {
+      this.decreaseHappieness();
+      this.increaseHunger();
+      this.increaseTiredness();
+      this.isDead();
+    }, this.timerUnit);
+  }
+}
